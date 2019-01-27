@@ -1,0 +1,37 @@
+{
+  "name": "geolocalizacion",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eperezn/ST0263-2019-1_Proyecto1.git"
+  },
+  "author": "eperezn@eafit.edu.co",
+  "dependencies": {
+    "bcryptjs": "*",
+    "body-parser": "*",
+    "connect-flash": "*",
+    "cookie-parser": "^1.4.1",
+    "express": "*",
+    "express-handlebars": "*",
+    "express-messages": "*",
+    "express-session": "*",
+    "express-validator": "*",
+    "flash": "^1.1.0",
+    "mongodb": "*",
+    "mongoose": "*",
+    "passport": "*",
+    "passport-http": "*",
+    "passport-local": "*",
+    "strategy": "^1.1.1"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eperezn/ST0263-2019-1_Proyecto1/issues"
+  },
+  "homepage": "https://github.com/eperezn/ST0263-2019-1_Proyecto1#readme"
+}
