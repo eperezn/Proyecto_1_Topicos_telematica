@@ -12,7 +12,3 @@
 * [Desliegue en el DCA](DCA-centos.md)
 
 
-
-# Despligue con Docker
-
-   * [Desliegue en docker](docker.md)
