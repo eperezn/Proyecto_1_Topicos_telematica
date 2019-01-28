@@ -1,31 +1,13 @@
 
-<div id="googleMap" style="height:200px;"></div>
-<button onclick="addPosition()">Add Position</button>
-<form action="/" method="POST" id="form" name="form">
-  <input type="hidden" class="form-control" name="username" placeholder="username" id="username">
-  <input type="hidden" class="form-control" name="latitude" placeholder="latitude" id="latitude">
-  <input type="hidden" class="form-control" name="longitude" placeholder="longitude" id="longitude">
-</form>
+
+<div id="googleMap" style="width:100%;height:400px;"></div>
 <script>
 function initMap() {
-  getLocation();
-}
-function getLocation(){
-  if(navigator.geolocation){
-    navigator.geolocation.getCurrentPosition(createMap);
-  }
-}
-function createMap(posicion){
-  var latlang = new google.maps.LatLng(parseFloat(posicion.coords.latitude),parseFloat(posicion.coords.longitude));
-  var mapProp= {
-  center:latlang,
-  zoom:10,
+var mapProp= {
+  center:new google.maps.LatLng(51.508742,-0.120850),
+  zoom:5,
 };
 var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-var marker = new google.maps.Marker({
-  position: latlang,
-});
-marker.setMap(map);
 }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLSFk8loDLMqzNpI-YIYMwmsI0syMaiyg&callback=initMap"></script>
