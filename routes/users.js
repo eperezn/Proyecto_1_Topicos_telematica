@@ -19,7 +19,7 @@ passport.use(new LocalStrategy(
                 if(isMatch){
                     return done(null, user);
                 }else{
-                    return done(null, flase, {message: 'Invalid password'});
+                    return done(null, false, {message: 'Invalid password'});
                 }
             });
         });
@@ -40,7 +40,7 @@ router.get('/login', Usercontroller.getLogin);
 router.post('/register', Usercontroller.postRegister);
 router.post('/login', 
             passport.authenticate('local', {successRedirect:'/', failureRedirect:'/users/login', failureFlash: true}),
-            Usercontroller.getLogin);
+            Usercontroller.postLogin);
 router.get('/logout', Usercontroller.getLogout);
 
 module.exports = router;
