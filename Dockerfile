@@ -11,7 +11,6 @@ WORKDIR /nodeApp
 COPY . ./
 
 RUN npm install --test
-RUN npm install nodemon -g
 
 EXPOSE 3000
 CMD node server.js
