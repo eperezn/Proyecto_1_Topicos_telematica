@@ -29,25 +29,44 @@ footer{
         <h3 class="text-muted">Geolocalizacion App</h3>
       </div>
         <ul id="myTabs" class="nav nav-tabs nav-justified">
-          <li class="active"><a href="#Commentary" data-toggle="tab">Home</a></li>
-          <li><a href="#Videos" data-toggle="tab">GPS</a></li>
-          <li><a href="#Events" data-toggle="tab">Historial</a></li>
+          <li class="active"><a href="#GPS" data-toggle="tab">GPS</a></li>
+          <li><a href="#Historial" data-toggle="tab">Historial</a></li>
         </ul>
         <div class="tab-content">
-          <div role="presentation" class="tab-pane fade in active" id="Commentary">Commentary WP_Query goes here.</div>
-          <div role="presentation" class="tab-pane fade" id="Videos">
+          <div role="presentation" class="tab-pane fade in active" id="GPS">
             <div id="map" style="width:100%;height:400px;"></div>  
             <center>
                 <input type="submit" class="btn btn-primary btn-block btn-lg" id="start" value="Start tracking">
                 <p id="failed" style="color:#bd1a1a ;display: none;text-align: center";>Position Failed. </p>
               </center>            
           </div>
-          <div role="presentation" class="tab-pane fade" id="Events">
+          <div role="presentation" class="tab-pane fade" id="Historial">
               <center>
                   <h3 style="margin-top: 0;color:#001a14">My Trips </h3>
-                  <ul>
-                      <span id="newData">
-                  </ul>
+                  <table class="table table-bordered table-hover" id="tab_logic">
+                      <thead>
+                        <tr >
+                          <th class="text-center">
+                            #
+                          </th>
+                          <th class="text-center">
+                            Longitud
+                          </th>
+                          <th class="text-center">
+                            Latitud
+                          </th>
+                          <th class="text-center">
+                              Hora
+                          </th>
+                          <th class="text-center">
+                              Fecha
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                          <tr id='addr0'></tr>
+                      </tbody>
+                    </table>
                 </center>
           </div>
         </div>

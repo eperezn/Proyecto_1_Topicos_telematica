@@ -96,5 +96,9 @@ authenticate: function(req, res, next) {
          res.redirect('/')
        }
       
+      },
+      logOut: function(req,res){
+          req.session.destroy();
+          res.redirect('/users/authenticateUser');
       }
 }
