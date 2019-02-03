@@ -14,4 +14,4 @@ RUN npm install --test
 RUN npm install nodemon -g
 
 EXPOSE 3000
-CMD nodemon server.js
+CMD node server.js
