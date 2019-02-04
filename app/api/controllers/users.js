@@ -63,7 +63,7 @@ authenticate: function(req, res, next) {
 
    loadRegister: function(req, res, next) {
       if(req.isAuthenticated()) {
-         res.redirect('./userPage')
+         res.redirect('./principalPage')
        }else{
          fs.readFile('./app/views/register.html',function (err, data){
             res.writeHead(200, {'Content-Type': 'text/html','Content-Length':data.length});
@@ -75,7 +75,7 @@ authenticate: function(req, res, next) {
 
    loadAuthenticate: function(req, res, next) {
       if(req.isAuthenticated()) {
-         res.redirect('./userPage')
+         res.redirect('./principalPage')
        } else {
          fs.readFile('./app/views/login.html',function (err, data){
             res.writeHead(200, {'Content-Type': 'text/html','Content-Length':data.length});

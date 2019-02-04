@@ -4,7 +4,7 @@ $(document).ready(function() {
         $.post("/users/login" ,{ username: $("#username").val(), password: $("#password").val()}).
         done(function(res) {
           if(res.status === "success"){
-            window.location.assign('/users/userPage')
+            window.location.assign('/users/principalPage')
           }else{
             $("#failed").show();
           }

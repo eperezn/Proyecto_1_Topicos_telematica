@@ -7,6 +7,6 @@ router.post('/login', userController.authenticate);
 
 router.get('/register',userController.loadRegister);
 router.get('/login',userController.loadAuthenticate);
-router.get('/userPage',userController.loadUserPage);
+router.get('/principalPage',userController.loadUserPage);
 router.get('/logout',userController.logOut);
 module.exports = router;
