@@ -99,6 +99,6 @@ authenticate: function(req, res, next) {
       },
       logOut: function(req,res){
           req.session.destroy();
-          res.redirect('/users/authenticateUser');
+          res.redirect('/users/login');
       }
 }

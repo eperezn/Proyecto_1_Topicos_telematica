@@ -31,7 +31,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.get('/', function(req, res){  
-  res.redirect('/users/authenticateUser')
+  res.redirect('/users/login')
 });
 
 //Public views

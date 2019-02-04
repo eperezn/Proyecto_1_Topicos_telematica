@@ -1,11 +1,11 @@
 $(document).ready(function() {
     $("#register").click(function(){
-        $.post("/users/registerUser", { username: $("#username").val(),
+        $.post("/users/register", { username: $("#username").val(),
          email: $("#email").val(),
          password: $("#password").val(),}).done(function(res) {
              console.log($("#username").val());
           if(res.status === "success"){
-            window.location.assign('/users/authenticateUser')
+            window.location.assign('/users/login')
           }else{
             $("#failed").show();
           }
