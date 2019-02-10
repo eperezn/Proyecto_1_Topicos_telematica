@@ -9,8 +9,9 @@ module.exports = {
       var hour = date.getHours() + ":"+date.getMinutes();
          
       locationModel.create({ username: req.session.data.username, 
-         latitude: req.body.latitude, 
-         longitude: req.body.longitude, 
+         trackname: req.body.trackname,
+         latitude: req.body['latitude[]'], 
+         longitude: req.body['longitude[]'], 
          hour: hour, 
          date: date.toDateString()}, 
          function (err, result) {
@@ -28,9 +29,17 @@ module.exports = {
      if (userInfo == null || err) {
          next("Username not found!");
      } else {
-        console.log(userInfo)
         res.json({status:"success", data:userInfo});
      }
     });
  },
+ searchname: function(req,res,next){
+   locationModel.find({trackname:req.params.id}, function(err, userInfo){
+      if (userInfo == null || err) {
+          next("Username not found!");
+      } else {
+         res.json({status:"success", data:userInfo});
+      }
+     });
+ }
 }

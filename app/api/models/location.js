@@ -8,14 +8,17 @@ const LocationSchema = new Schema({
             trim: true,  
             required: true,
             },
+            trackname:{
+                type: String,
+                trim: true,  
+                required: true,
+            },
             latitude: {
-            type: String,
-            trim: true,
+            type: Array,
             required: true
             },
             longitude: {
-            type: String,
-            trim: true,
+            type: Array,
             required: true
             },
             hour: {

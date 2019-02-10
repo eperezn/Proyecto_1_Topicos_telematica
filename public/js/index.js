@@ -1,16 +1,17 @@
+var map;
+var longitudeg = [];
+var latitudeg = [];
 $(document).ready(function(){
     $('.nav-tabs a[href="#Historial"]').click(function(){
         $.get("/map/findLocations",function(data, status){
         }).done(function(res) {
           if(res.status === "success"){
               for(i = 0; i< res.data.length; i++) {
-                var mensaje = res.data[i].username + "  latitude:  "+ res.data[i].latitude + "   longitude:  "+ res.data[i].longitude;
-                $('#addr'+i).html("<td>"+ (i+1) +"</td>"+
-                "</td><td><label>" +res.data[i].longitude+"</label>"+
-                "</td><td><label>" +res.data[i].latitude+"</label></td>"+
+                $('#addr'+i).html('<button type="button" data-toggle="modal" data-target="#myModal" onclick="modal('+(i+1)+')" id="button'+(i+1)+'">'+res.data[i].trackname+'</button>'+
                 "<td><label>" +res.data[i].hour+"</label></td>"+
                 "<td><label>" +res.data[i].date+"</label></td>");
                 $('#tab_logic').append('<tr id="addr'+(i+1)+'"></tr>');
+                
                 //$("#newData").append(JSON.stringify(mensaje));
             }
           }
@@ -18,7 +19,25 @@ $(document).ready(function(){
     }),
     $("#start").click(trackin);
 });
-var map;
+
+function modal(i){
+    $.get("/map/findLocations/"+$("#button"+i).text(),function(data, status){
+    }).done(function(res){
+        if(res.status==="success"){
+            $("#titulo").text("RUTA  "+res.data[0].trackname);
+            map =  new google.maps.Map(document.getElementById('map2'), {zoom: 4});
+            for(j=0;j<res.data[0].latitude.length;j++){
+                var pos = {
+                    lat: parseFloat(res.data[0].latitude[j]),
+                    lng: parseFloat(res.data[0].longitude[j])}
+                    map.setCenter(pos);
+                map.setZoom(18);
+                placeMarker(pos,map);
+            }
+        }
+    })
+    }
+
 function trackin(){
     if($("#start").val()== "Start tracking"){
         $("#start").css('background-color', '#ff9999');
@@ -27,20 +46,28 @@ function trackin(){
             navigator.geolocation.getCurrentPosition(function(position) {
                 var pos = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
                 placeMarker(pos,map);
-                $.post("../map/saveLocation", {latitude:pos.lat,longitude:pos.lng}).done(function(res) {
-                    if(res.status === "success"){
-                      console.log("POSITION ADDED");
-                    }else{
-                      $("#failed").show();
-                    }
-                    })
+                saving(position);
         });
     },5000);
 }else{
     clearInterval(interval);
     $("#start").val('Start tracking');
     $("#start").css('background-color', '#80ccff');
+    $.post("../map/saveLocation", {latitude:latitudeg,longitude:longitudeg,trackname:$("#track").val()}).done(function(res) {
+        if(res.status === "success"){
+          console.log("POSITION ADDED");
+        }else{
+          $("#failed").show();
+        }
+        });
+    longitude = [];
+    latitude = [];
 }
+}
+
+function saving(position){
+    longitudeg.push((position.coords.longitude).toString());
+    latitudeg.push((position.coords.latitude).toString());
 }
 
 function initMap() {
